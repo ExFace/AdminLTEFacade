@@ -773,9 +773,9 @@ JS;
 										
 						<!-- Tab panes -->
 						<div class="tab-content">
-							<div role="tabpanel" class="tab-pane active row" id="{$this->get_id()}_popup_filters">{$filters_html}</div>
-							<div role="tabpanel" class="tab-pane" id="{$this->get_id()}_popup_columns">{$columns_html}</div>
-							<div role="tabpanel" class="tab-pane" id="{$this->get_id()}_popup_sorting">{$sorting_html}</div>
+							<div role="tabpanel" class="tab-pane active" id="{$this->get_id()}_popup_filters"><div class="tab-pane-content-wrapper row">{$filters_html}</div></div>
+							<div role="tabpanel" class="tab-pane" id="{$this->get_id()}_popup_columns"><div class="tab-pane-content-wrapper">{$columns_html}</div></div>
+							<div role="tabpanel" class="tab-pane" id="{$this->get_id()}_popup_sorting"><div class="tab-pane-content-wrapper">{$sorting_html}</div></div>
 						</div>
 						
 					</div>
