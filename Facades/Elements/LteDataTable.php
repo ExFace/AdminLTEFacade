@@ -189,18 +189,18 @@ JS;
             $includes[] = '<script type="text/javascript" src="' . $facade->buildUrlToSource('LIBS.DATATABLES.RESPONSIVE.JS_THEME') . '"></script>';
         }
         
-        $includes[] = '<script type="text/javascript" src="exface/vendor/exface/AdminLTEFacade/Facades/js/DataTables.exface.helpers.js"></script>';
+        $includes[] = '<script type="text/javascript" src="vendor/exface/AdminLTEFacade/Facades/js/DataTables.exface.helpers.js"></script>';
         
         // Sortable plugin for column sorting in the table configuration popup
-        $includes[] = '<script type="text/javascript" src="exface/vendor/bower-asset/jquery-sortable/source/js/jquery-sortable-min.js"></script>';
+        $includes[] = '<script type="text/javascript" src="vendor/bower-asset/jquery-sortable/source/js/jquery-sortable-min.js"></script>';
         
         // Right-click menu with context.js
-        $includes[] = '<link rel="stylesheet" type="text/css" href="exface/vendor/exface/AdminLTEFacade/Facades/js/context.js/context.bootstrap.css">';
-        $includes[] = '<script type="text/javascript" src="exface/vendor/exface/AdminLTEFacade/Facades/js/context.js/context.js"></script>';
-        // $includes[] = '<script type="text/javascript" src="exface/vendor/exface/AdminLTEFacade/Facades/js/jquery.contextmenu.js"></script>';
+        $includes[] = '<link rel="stylesheet" type="text/css" href="vendor/exface/AdminLTEFacade/Facades/js/context.js/context.bootstrap.css">';
+        $includes[] = '<script type="text/javascript" src="vendor/exface/AdminLTEFacade/Facades/js/context.js/context.js"></script>';
+        // $includes[] = '<script type="text/javascript" src="vendor/exface/AdminLTEFacade/Facades/js/jquery.contextmenu.js"></script>';
         
         // Resize-Sensor
-        $includes[] = '<script src="exface/vendor/npm-asset/css-element-queries/src/ResizeSensor.js"></script>';
+        $includes[] = '<script src="vendor/npm-asset/css-element-queries/src/ResizeSensor.js"></script>';
         
         return $includes;
     }
