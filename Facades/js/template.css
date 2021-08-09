@@ -110,6 +110,11 @@ td input.form-control {height: 25px; margin: -5px 0;}
 	height:100%;
 }
 
+/* ProgressBar */
+.exf-progressbar {width: 100%; padding: 0 3px; border:1px solid #ccc; position:relative; overflow: hidden; white-space:nowrap; color:transparent; box-sizing: border-box;}
+.exf-progressbar-bar {position: absolute; left:0; top:0;}
+.exf-progressbar-text {position:absolute; left:0; top:0; z-index:100; padding:0 2px; width:100%; color:initial; overflow: hidden; text-overflow: ellipsis;}
+
 /* Context menus */
 li > a > i.fa {width: 13px;}
 
@@ -192,7 +197,6 @@ ol.sortable li.placeholder:before {
 ol {list-style-type: none; }
 ol i.icon-move {cursor: pointer; }
 ol li.highlight {background: #333333; color: #999999; }
-ol li.highlight i.icon-move {}
 
 /* Navbar */
 .navbar-nav > .context-menu > .dropdown-menu > li .menu > li > a {
