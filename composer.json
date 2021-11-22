@@ -27,7 +27,6 @@
 		"bower-asset/iscroll" : "^5.2",
 		"bower-asset/jScrollPane" : "^2.0.23",
 		"bower-asset/font-awesome" : "^4.7",
-		"bower-asset/ionicons" : "^2.0.1",
 		"bower-asset/datatables.net" : "^1.10.12",
 		"bower-asset/datatables.net-bs" : "^1.10.12",
 		"bower-asset/jquery-qrcode" : "^1.0",
@@ -42,8 +41,8 @@
 		"npm-asset/echarts" : "^5",
 		"npm-asset/moment" : "^2.24.0",
 		"npm-asset/jexcel" : "^4.4.1",
-		"npm-asset/tinycolor2": "^1.4.2",
-		"npm-asset/tinygradient": "^1.1.4"
+		"npm-asset/tinycolor2" : "^1.4.2",
+		"npm-asset/tinygradient" : "^1.1.4"
 	},
 	"autoload" : {
 		"psr-4" : {
