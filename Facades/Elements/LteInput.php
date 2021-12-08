@@ -14,10 +14,14 @@ class LteInput extends lteValue
         buildJsValidator as buildJsValidatorViaTrait;
     }
 
+    /**
+     * 
+     * {@inheritDoc}
+     * @see \exface\Core\Facades\AbstractAjaxFacade\Elements\AbstractJqueryElement::init()
+     */
     protected function init()
     {
         parent::init();
-        $this->setElementType('text');
         // If the input's value is bound to another element via an expression, we need to make sure, that other element will
         // change the input's value every time it changes itself. This needs to be done on init() to make sure, the other element
         // has not generated it's JS code yet!
@@ -26,8 +30,23 @@ class LteInput extends lteValue
         // Register an onChange-Script on the element linked by a disable condition.
         $this->registerDisableConditionAtLinkedElement();
     }
-
-    function buildHtml()
+    
+    
+    /**
+     * 
+     * @return string|NULL
+     */
+    protected function getInputType() : ?string
+    {
+        return 'text';
+    }
+    
+    /**
+     * 
+     * {@inheritDoc}
+     * @see \exface\AdminLTEFacade\Facades\Elements\LteValue::buildHtml()
+     */
+    public function buildHtml()
     {
         $requiredScript = $this->getWidget()->isRequired() ? 'required="true" ' : '';
         $disabledScript = $this->getWidget()->isDisabled() ? 'disabled="disabled" ' : '';
@@ -36,7 +55,7 @@ class LteInput extends lteValue
 
                         {$this->buildHtmlLabel()}
                         <input class="form-control"
-                            type="{$this->getElementType()}"
+                            type="{$this->getInputType()}"
                             name="{$this->getWidget()->getAttributeAlias()}" 
                             value="{$this->escapeString($this->getWidget()->getValueWithDefaults(), false, true)}" 
                             id="{$this->getId()}"  
@@ -47,6 +66,11 @@ HTML;
         return $this->buildHtmlGridItemWrapper($output);
     }
 
+    /**
+     * 
+     * {@inheritDoc}
+     * @see \exface\AdminLTEFacade\Facades\Elements\LteValue::buildJs()
+     */
     function buildJs()
     {
         $output = '';

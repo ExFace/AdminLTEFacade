@@ -25,7 +25,6 @@ class LteInputComboTable extends lteInput
     protected function init()
     {
         parent::init();
-        $this->setElementType('combogrid');
         $this->setJsDebugLevel($this->getFacade()->getConfig()->getOption("FACADE.JAVASCRIPT_DEBUG_LEVEL"));
         
         // Register onChange-Handler for Filters with Live-Reference-Values

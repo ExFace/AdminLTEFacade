@@ -15,6 +15,24 @@ class LteImage extends lteDisplay
 {
     use HtmlImageTrait;
     
+    /**
+     *
+     * @see AbstractJqueryElement::buildHtml()
+     */
+    public function buildHtml()
+    {
+        return $this->buildHtmlImage($this->getWidget()->getUri());
+    }
+    
+    /**
+     *
+     * @see AbstractJqueryElement::buildJs()
+     */
+    public function buildJs()
+    {
+        return '';
+    }
+    
     public function buildCssElementClass()
     {
         return 'img-responsive';

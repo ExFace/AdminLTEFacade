@@ -24,13 +24,12 @@ class LteInputDate extends lteInput
 
     private $bootstrapDatepickerLocale;
 
-    protected function init()
-    {
-        parent::init();
-        $this->setElementType('datepicker');
-    }
-
-    function buildHtml()
+    /**
+     * 
+     * {@inheritDoc}
+     * @see \exface\AdminLTEFacade\Facades\Elements\LteInput::buildHtml()
+     */
+    public function buildHtml()
     {
         $requiredScript = $this->getWidget()->isRequired() ? 'required="true" ' : '';
         $disabledScript = $this->getWidget()->isDisabled() ? 'disabled="disabled" ' : '';
@@ -46,7 +45,7 @@ class LteInputDate extends lteInput
                         value="{$this->getWidget()->getValueWithDefaults()}"
                         {$requiredScript}
                         {$disabledScript} />
-                    <div class="input-group-addon" onclick="$('#{$this->getId()}').{$this->getElementType()}('show');">
+                    <div class="input-group-addon" onclick="$('#{$this->getId()}').datepicker('show');">
                         <i class="fa fa-calendar"></i>
                     </div>
                 </div>
@@ -55,6 +54,11 @@ HTML;
         return $this->buildHtmlGridItemWrapper($output);
     }
 
+    /**
+     * 
+     * {@inheritDoc}
+     * @see \exface\AdminLTEFacade\Facades\Elements\LteInput::buildJs()
+     */
     function buildJs()
     {
         $languageScript = $this->getBootstrapDatepickerLocale() ? 'language: "' . $this->getBootstrapDatepickerLocale() . '",' : '';
@@ -65,7 +69,7 @@ HTML;
         
         $output = <<<JS
 
-    $("#{$this->getId()}").{$this->getElementType()}({
+    $("#{$this->getId()}").datepicker({
         // Bleibt geoeffnet wenn ein Datum selektiert wird. Gibt sonst Probleme, wenn
         // eine Datumseingabe per Enter abgeschlossen wird und anschliessend eine neue
         // Datumseingabe erfolgt.
@@ -85,7 +89,7 @@ HTML;
     });
     // Wird der uebergebene Wert per value="..." im HTML uebergeben, erscheint er
     // unformatiert (z.B. "-1d"). Wird der Wert hier gesetzt, wird er formatiert.
-    $("#{$this->getId()}").{$this->getElementType()}("update", {$this->escapeString($this->getWidget()->getValueWithDefaults())});
+    $("#{$this->getId()}").datepicker("update", {$this->escapeString($this->getWidget()->getValueWithDefaults())});
     // Bei leeren Werten, wird die toValue-Funktion nicht aufgerufen, und damit der
     // interne Wert fuer die Rueckgabe des value-Getters nicht entfernt. Dies geschieht
     // hier.

@@ -26,7 +26,6 @@ class LteInlineGroup extends LteValue
     protected function init()
     {
         parent::init();
-        $this->setElementType('div');
         if ($this->getWidget()->isStretched()) {
             $this->optimizeChildrenWidths();
             // Make all direct children use CSS width instead of bootstrap gird classes,

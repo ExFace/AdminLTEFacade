@@ -3,10 +3,13 @@ namespace exface\AdminLTEFacade\Facades\Elements;
 
 class LteInputNumber extends lteInput
 {
-
-    protected function init()
+    /**
+     * 
+     * {@inheritDoc}
+     * @see \exface\AdminLTEFacade\Facades\Elements\LteInput::getInputType()
+     */
+    protected function getInputType() : ?string
     {
-        parent::init();
-        $this->setElementType('number');
+        return 'number';
     }
 }
