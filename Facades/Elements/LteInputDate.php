@@ -220,8 +220,13 @@ JS;
      * {@inheritDoc}
      * @see \exface\AdminLTEFacade\Facades\Elements\LteInput::buildJsValidator()
      */
-    function buildJsValidator()
+    function buildJsValidator(string $valJs = null)
     {
+        // TODO Validate the date here!!!
+        if ($valJs !== null) {
+            return parent::buildJsValidator($valJs);
+        }
+        
         if ($this->isValidationRequired() === true && $this->getWidget()->isRequired()) {
             $output = '$("#' . $this->getId() . '").data("_isValid")';
         } else {

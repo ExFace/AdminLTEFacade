@@ -168,13 +168,13 @@ JS;
      * {@inheritDoc}
      * @see \exface\Core\Facades\AbstractAjaxFacade\Elements\AbstractJqueryElement::buildJsValidator()
      */
-    function buildJsValidator()
+    function buildJsValidator(string $valJs = null)
     {
         if ($this->isValidationRequired() === true && $this->getWidget()->isRequired()) {
             return 'Boolean($("#' . $this->getId() . '").val())';
         }
         
-        return $this->buildJsValidatorViaTrait();
+        return $this->buildJsValidatorViaTrait($valJs);
     }
 }
 ?>

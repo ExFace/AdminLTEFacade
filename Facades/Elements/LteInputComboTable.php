@@ -871,9 +871,13 @@ JS;
      *
      * @see \exface\AdminLTEFacade\Facades\Elements\LteInput::buildJsValidator()
      */
-    function buildJsValidator()
+    function buildJsValidator(string $valJs = null)
     {
         $widget = $this->getWidget();
+        
+        if ($valJs !== null) {
+            return parent::buildJsValidator($valJs);
+        }
         
         $must_be_validated = $widget->isRequired() && ! ($widget->isHidden() || $widget->isReadonly() || $widget->isDisabled() || $widget->isDisplayOnly());
         if ($must_be_validated) {
