@@ -1,16 +1,14 @@
 <?php
 namespace exface\AdminLTEFacade\Facades\Elements;
 
-use exface\Core\Widgets\Dialog;
 use exface\Core\Interfaces\Widgets\iLayoutWidgets;
 use exface\Core\Widgets\AbstractWidget;
 use exface\Core\Interfaces\Widgets\iContainOtherWidgets;
-use exface\Core\Interfaces\WidgetInterface;
 use exface\Core\Interfaces\Widgets\iFillEntireContainer;
 
 /**
  *
- * @method Dialog getWidget()
+ * @method \exface\Core\Widgets\Dialog getWidget()
  *        
  * @author aka
  *        
@@ -24,15 +22,13 @@ class LteDialog extends lteForm
      */
     protected function isLazyLoading()
     {
-        return $this->getWidget()->getLazyLoading(false);
+        return $this->getWidget()->getLazyLoading(true);
     }
     
     function buildJs()
     {
         $output = '';
-        if (! $this->isLazyLoading()) {
-            $output .= $this->buildJsForWidgets();
-        }
+        $output .= $this->buildJsForWidgets();
         $output .= $this->buildJsButtons();
         // Layout-Funktionen hinzufuegen
         $output .= $this->buildJsLayouterFunction();
@@ -88,8 +84,7 @@ JS;
 HTML;
         }
         
-        if (! $this->isLazyLoading()) {
-            $output = <<<HTML
+        $output = <<<HTML
 
 <div class="modal" id="{$this->getId()}">
     <div class="modal-dialog {$this->buildCssWidthClasses()}" style="{$dialogStyle}">
@@ -111,7 +106,7 @@ HTML;
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 HTML;
-        }
+
         return $output;
     }
     
