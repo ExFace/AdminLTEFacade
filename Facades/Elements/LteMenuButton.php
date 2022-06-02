@@ -88,7 +88,7 @@ HTML;
      * {@inheritdoc}
      * @see JqueryButtonTrait::buildJsCloseDialog()
      */
-    protected function buildJsCloseDialog($widget, $input_element)
+    protected function buildJsCloseDialog() : string
     {
         return '';
     }

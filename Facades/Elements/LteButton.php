@@ -99,7 +99,7 @@ class LteButton extends lteAbstractElement
         return $this->buildHtmlHeadTagsForCustomScriptIncludes();
     }
 
-    protected function buildJsClickShowDialog(ActionInterface $action, AbstractJqueryElement $input_element)
+    protected function buildJsClickShowDialog(ActionInterface $action, string $jsRequestData) : string
     {
         $widget = $this->getWidget();
         
@@ -111,7 +111,6 @@ class LteButton extends lteAbstractElement
             }
         }
         
-        $output = $this->buildJsRequestDataCollector($action, $input_element);
         $output .= <<<JS
 						{$this->buildJsBusyIconShow()}
 						$.ajax({
@@ -120,11 +119,11 @@ class LteButton extends lteAbstractElement
 							dataType: 'html',
 							data: {
 								{$this->buildJsRequestCommonParams($widget, $action)}
-								data: requestData
+								data: {$jsRequestData}
 								{$prefill}
 							},
 							success: function(data, textStatus, jqXHR) {
-								{$this->buildJsCloseDialog($widget, $input_element)}
+								{$this->buildJsCloseDialog()}
 		                       	{$this->buildJsBusyIconHide()}
 		                       	if ($('#ajax-dialogs').length < 1){
 		                       		$('body').append('<div id=\"ajax-dialogs\"></div>');
@@ -147,8 +146,9 @@ JS;
         return $output;
     }
 
-    protected function buildJsCloseDialog($widget, $input_element)
+    protected function buildJsCloseDialog() : string
     {
+        $widget = $this->getWidget();
         if ($widget instanceof DialogButton && $widget->getCloseDialogAfterActionSucceeds()) {
             return "$('#" . $this->getFacade()->getElement($widget->getDialog())->getId() . "').modal('hide');";
         }
