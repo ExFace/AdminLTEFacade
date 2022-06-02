@@ -4,14 +4,13 @@ namespace exface\AdminLTEFacade\Facades\Elements;
 use exface\Core\Widgets\DialogButton;
 use exface\Core\Interfaces\Actions\ActionInterface;
 use exface\Core\Facades\AbstractAjaxFacade\Elements\JqueryButtonTrait;
-use exface\Core\Facades\AbstractAjaxFacade\Elements\AbstractJqueryElement;
-use exface\Core\Widgets\Button;
-use exface\Core\Facades\AbstractAjaxFacade\Elements\JqueryDisableConditionTrait;
 use exface\Core\Interfaces\Actions\iRunFacadeScript;
 
 /**
  * Generates jQuery Mobile buttons for ExFace
  *
+ * @method \exface\Core\Widgets\Button getWidget()
+ * 
  * @author Andrej Kabachnik
  *        
  */
@@ -29,7 +28,7 @@ class LteButton extends lteAbstractElement
         if ($action) {
             // Actions with facade scripts may contain some helper functions or global variables.
             // Print the here first.
-            if ($action && $action->implementsInterface('iRunFacadeScript')) {
+            if ($action && $action instanceof iRunFacadeScript) {
                 $output .= $this->getAction()->buildScriptHelperFunctions($this->getFacade());
             }
         }
