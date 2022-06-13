@@ -5,17 +5,17 @@ use exface\Core\Facades\AbstractAjaxFacade\AbstractAjaxFacade;
 use exface\Core\Facades\AbstractAjaxFacade\Middleware\JqueryDataTablesUrlParamsReader;
 use exface\Core\Interfaces\DataSheets\DataSheetInterface;
 use exface\Core\Interfaces\WidgetInterface;
+use exface\Core\Interfaces\Selectors\FacadeSelectorInterface;
 
 class AdminLTEFacade extends AbstractAjaxFacade
 {
     /**
      * 
-     * {@inheritDoc}
-     * @see \exface\Core\Facades\AbstractAjaxFacade\AbstractAjaxFacade::init()
+     * @param FacadeSelectorInterface $selector
      */
-    public function init()
+    public function __construct(FacadeSelectorInterface $selector)
     {
-        parent::init();
+        parent::__construct($selector);
         $this->setClassPrefix('lte');
         $this->setClassNamespace(__NAMESPACE__);
     }
