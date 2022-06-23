@@ -74,5 +74,22 @@ class AdminLTEFacade extends AbstractAjaxFacade
     {
         return $this->getApp()->getDirectoryAbsolutePath() . DIRECTORY_SEPARATOR . 'Facades' . DIRECTORY_SEPARATOR . 'Templates' . DIRECTORY_SEPARATOR . 'LteMessagePageTemplate.html';
     }
-
+    
+    /**
+     *
+     * {@inheritdoc}
+     * @see AbstractAjaxFacade::getSemanticColors()
+     */
+    public function getSemanticColors() : array
+    {
+        $colors = parent::getSemanticColors();
+        if (empty($colors)) {
+            $colors = [
+                '~OK' => 'lightgreen',
+                '~WARNING' => 'yellow',
+                '~ERROR' => 'orangered'
+            ];
+        }
+        return $colors;
+    }
 }
