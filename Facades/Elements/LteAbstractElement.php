@@ -2,19 +2,21 @@
 namespace exface\AdminLTEFacade\Facades\Elements;
 
 use exface\Core\Facades\AbstractAjaxFacade\Elements\AbstractJqueryElement;
-use exface\AdminLTEFacade\Facades\AdminLTEFacade;
 use exface\Core\Interfaces\Widgets\iFillEntireContainer;
 use exface\Core\Interfaces\Widgets\iLayoutWidgets;
+use exface\Core\Facades\AbstractAjaxFacade\Elements\JsConditionalPropertyTrait;
 
 /**
  *
- * @method AdminLTEFacade getFacade()
+ * @method \exface\AdminLTEFacade\Facades\AdminLTEFacade getFacade()
  *        
  * @author Andrej Kabachnik
  *        
  */
 abstract class LteAbstractElement extends AbstractJqueryElement
 {
+    use JsConditionalPropertyTrait;
+    
     private $widthUsesGridClasses = null;
 
     public function buildJsInitOptions()
@@ -261,5 +263,54 @@ JS;
         return $this;
     }
     
+    /**
+     *
+     * @param bool $async
+     * @return string
+     */
+    protected function buildjsConditionalProperties(bool $async = false) : string
+    {
+        $js = '';
+        
+        // hidden_if
+        if ($propertyIf = $this->getWidget()->getHiddenIf()) {
+            $js .= $this->buildJsConditionalProperty($propertyIf, $this->buildJsSetHidden(true), $this->buildJsSetHidden(false), $async);
+        }
+        
+        // disabled_if
+        if ($propertyIf = $this->getWidget()->getDisabledIf()) {
+            $js .= $this->buildJsConditionalProperty($propertyIf, $this->buildJsSetDisabled(true), $this->buildJsSetDisabled(false), $async);
+        }
+        
+        return $js;
+    }
+    
+    /**
+     * 
+     * @return void
+     */
+    protected function registerConditionalPropertiesLiveRefs()
+    {
+        // hidden_if
+        if ($propertyIf = $this->getWidget()->getHiddenIf()) {
+            $this->registerConditionalPropertyUpdaterOnLinkedElements($propertyIf, $this->buildJsSetHidden(true), $this->buildJsSetHidden(false));
+        }
+        
+        // disabled_if
+        if ($propertyIf = $this->getWidget()->getDisabledIf()) {
+            $this->registerConditionalPropertyUpdaterOnLinkedElements($propertyIf, $this->buildJsSetDisabled(true), $this->buildJsSetDisabled(false));
+        }
+        
+        return;
+    }
+    
+    /**
+     *
+     * @param bool $hidden
+     * @return string
+     */
+    protected function buildJsSetHidden(bool $hidden) : string
+    {
+        return "$('#{$this->getId()}')" . ($hidden ? ".addClass('exfHidden')" : ".removeClass('exfHidden')");
+    }
 }
-?>

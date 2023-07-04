@@ -312,7 +312,7 @@ JS;
         $output .= $widget->isRequired() ? $this->buildJsRequired() : '';
         
         // Initialize the disabled state of the widget if a disabled condition is set.
-        $output .= $this->buildJsDisableConditionInitializer();
+        $output .= $this->buildjsConditionalProperties(true);
         
         return $output;
     }
@@ -842,27 +842,19 @@ function {$this->buildJsFunctionPrefix()}initGlobals() {
 JS;
         return $output;
     }
-
+    
     /**
      *
      * {@inheritdoc}
-     *
-     * @see \exface\Core\Facades\AbstractAjaxFacade\Elements\AbstractJqueryElement::buildJsEnabler()
+     * @see \exface\Core\Facades\AbstractAjaxFacade\Elements\AbstractJqueryElement::buildJsSetDisabled()
      */
-    function buildJsEnabler()
+    public function buildJsSetDisabled(bool $trueOrFalse) : string
     {
-        return $this->getId() . '_ms.enable()';
-    }
-
-    /**
-     *
-     * {@inheritdoc}
-     *
-     * @see \exface\Core\Facades\AbstractAjaxFacade\Elements\AbstractJqueryElement::buildJsDisabler()
-     */
-    function buildJsDisabler()
-    {
-        return $this->getId() . '_ms.disable()';
+        if ($trueOrFalse === true) {
+            return $this->getId() . '_ms.disable()';
+        } else {
+            return $this->getId() . '_ms.enable()';
+        }
     }
 
     /**

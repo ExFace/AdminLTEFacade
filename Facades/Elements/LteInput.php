@@ -3,13 +3,11 @@ namespace exface\AdminLTEFacade\Facades\Elements;
 
 use exface\Core\Interfaces\Actions\ActionInterface;
 use exface\Core\Facades\AbstractAjaxFacade\Elements\JqueryLiveReferenceTrait;
-use exface\Core\Facades\AbstractAjaxFacade\Elements\JqueryDisableConditionTrait;
 use exface\Core\Facades\AbstractAjaxFacade\Elements\JqueryInputValidationTrait;
 
 class LteInput extends lteValue
 {
     use JqueryLiveReferenceTrait;
-    use JqueryDisableConditionTrait;
     use JqueryInputValidationTrait {
         buildJsValidator as buildJsValidatorViaTrait;
     }
@@ -90,7 +88,7 @@ HTML;
         $output .= $this->buildJsOnChangeHandler();
         
         // Initialize the disabled state of the widget if a disabled condition is set.
-        $output .= $this->buildJsDisableConditionInitializer();
+        $output .= $this->buildjsConditionalProperties(true);
         return $output;
     }
 

@@ -53,7 +53,8 @@ class LteButton extends lteAbstractElement
         }
         
         // Initialize the disabled state of the widget if a disabled condition is set.
-        $output .= $this->buildJsDisableConditionInitializer();
+        
+        $output .= $this->buildjsConditionalProperties(true);
         
         return $output;
     }
