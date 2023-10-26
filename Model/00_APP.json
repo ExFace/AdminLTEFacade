@@ -37,13 +37,13 @@
     "rows": [
         {
             "CREATED_ON": "2018-09-27 10:11:26",
-            "MODIFIED_ON": "2019-04-14 06:13:02",
+            "MODIFIED_ON": "2023-10-26 09:42:40",
             "CREATED_BY_USER": "0x31000000000000000000000000000000",
             "MODIFIED_BY_USER": "0x31000000000000000000000000000000",
             "UID": "0x11e8c23db26b0a35b73e0205857feb80",
             "DEFAULT_LANGUAGE_CODE": "en",
             "ALIAS": "exface.AdminLTEFacade",
-            "NAME": "ExFace Template for AdminLTE 2"
+            "NAME": "Web UI facade with Bootstrap AdminLTE 2"
         }
     ],
     "totals_rows": [],
