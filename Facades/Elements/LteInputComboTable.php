@@ -863,7 +863,7 @@ JS;
      *
      * @see \exface\AdminLTEFacade\Facades\Elements\LteInput::buildJsValidator()
      */
-    function buildJsValidator(string $valJs = null)
+    function buildJsValidator(?string $valJs = null) : string
     {
         $widget = $this->getWidget();
         

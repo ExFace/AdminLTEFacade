@@ -166,7 +166,7 @@ JS;
      * {@inheritDoc}
      * @see \exface\Core\Facades\AbstractAjaxFacade\Elements\AbstractJqueryElement::buildJsValidator()
      */
-    function buildJsValidator(string $valJs = null)
+    function buildJsValidator(?string $valJs = null) : string
     {
         if ($this->isValidationRequired() === true && $this->getWidget()->isRequired()) {
             return 'Boolean($("#' . $this->getId() . '").val())';

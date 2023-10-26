@@ -220,7 +220,7 @@ JS;
      * {@inheritDoc}
      * @see \exface\AdminLTEFacade\Facades\Elements\LteInput::buildJsValidator()
      */
-    function buildJsValidator(string $valJs = null)
+    function buildJsValidator(?string $valJs = null) : string
     {
         // TODO Validate the date here!!!
         if ($valJs !== null) {
